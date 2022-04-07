@@ -1,0 +1,130 @@
+/*#include<stdio.h>//v0
+#include<string.h>
+int main()
+{
+	char strExp[]="3+4";
+	int a=strExp[0]-'0';
+	int b=strExp[2]-'0';
+	int res=a+b;
+	printf("res=%d\n",res);
+	return 0;
+}*/
+
+
+
+
+
+/*
+#include<stdio.h>//v1
+#include<string.h>
+int main()
+{
+	
+	char strExp[]="1+2+2+1+2+5+4-1-3+4-8";
+	for(int x=0;x<10;x++)
+	{
+		for(char y='a';'a'<'k';y++)
+		{
+			y=strExp[x];
+			int(y);
+			printf("%d",y);
+		}
+		if(strExp[x]=='43')
+		{
+			int sum=strExp[x]+sum;
+		}else 
+			if(strExp[x]=='45')
+			{
+			    int sum=sum-strExp[x];
+			}
+	}
+	printf("%d",sum);
+	int res=strExp[0]-'0';
+	for(int i=1;i<strlen(strExp);i++)
+	{
+		if(strExp[i]=='i')
+		{
+			int a=strExp[i+1]-'0';
+			res=res+a;
+			i++;
+		}
+		else if(strExp[i]=='-')
+		{
+			int b=strExp[i+1]-'0';
+			res=res-b;
+			i++;
+		}
+	}
+	printf("res=%d\n",res);
+	return 0;
+}*/
+
+
+
+
+
+/*
+#include<stdio.h>//v2
+#include<string.h>
+int main()
+{
+	char strExp[]="2*2/4*1/1*2*3/2";
+	int res=strExp[0]-'0';
+	for(int i=1;i<strlen(strExp);i++)
+	{
+		if(strExp[i]=='*')
+		{
+			int a=strExp[i+1]-'0';
+			res=res*a;
+			i++;
+		}
+		else if(strExp[i]=='/')
+		{
+			int b=strExp[i+1]-'0';
+			res=res/b;
+			i++;
+		}
+	}
+	printf("res=%d\n",res);
+	return 0;
+}*/
+
+
+
+
+
+#include<stdio.h>//v3
+#include<string.h>
+int main()
+{
+	char strExp[]="2+2*3+2/2-1";
+	char strTmp[strlen(strExp)];
+	int strTmpIndex=-1;
+	for(int i=0;i<strlen(strExp);i++)
+	{
+		if(strExp[i]=='*')
+		{
+			int left=strTmp[strTmpIndex]-'0';
+			int right=strExp[i+1]-'0';
+			strTmp[strTmpIndex]=left*right+'0';
+			i++; 
+		}
+		else if(strExp[i]=='/')
+		{
+			int left=strTmp[strTmpIndex]-'0';
+			int right=strExp[i+1]-'0';
+			strTmp[strTmpIndex]=left/right+'0';
+			i++; 
+		}
+		else strTmp[++strTmpIndex]=strExp[i];
+	}
+	int res=strTmp[0]-'0';
+	for(int i=1;i<strlen(strTmp);i++)
+	{
+		if(strTmp[i]=='+')res+=strTmp[++i]-'0';
+		else if(strTmp[i]=='-')
+		res-=strTmp[++i]-'0'; 
+	}
+	printf("%d\n",res);
+	return 0;
+}
